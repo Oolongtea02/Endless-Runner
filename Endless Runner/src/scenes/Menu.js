@@ -27,7 +27,7 @@ class Menu extends Phaser.Scene {
             fixedWidth: 0
         }
 
-        const text = this.add.text(100, 180, 'Endless Runner', {
+        const text = this.add.text(100, 180, 'Bunny Jumper', {
             fontFamily: 'Courier',
             fontSize: '38px',
             color: '#3c91d6',
