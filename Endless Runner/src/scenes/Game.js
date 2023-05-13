@@ -41,6 +41,7 @@ class Game extends Phaser.Scene
 		this.load.image('mountain', './assets/mountain.png')
 
 		this.load.audio('jump', 'assets/sfx/phaseJump1.wav')
+		this.load.audio('chew', './assets/sfx/carrotnom.wav')
         this.load.audio('bg_music', './assets/bgm.mp3')
 
 		this.cursors = this.input.keyboard.createCursorKeys()
@@ -104,7 +105,7 @@ class Game extends Phaser.Scene
 			return
 		}
 
-		this.mountain.tilePositionX -= 4;
+		this.mountain.tilePositionY -= 2;
 
 		this.platforms.children.iterate(child => {
 			/** @type {Phaser.Physics.Arcade.Sprite} */
@@ -206,6 +207,8 @@ class Game extends Phaser.Scene
 	handleCollectCarrot(player, carrot)
 	{
 		this.carrots.killAndHide(carrot)
+
+		this.sound.play('chew')
 
 		this.physics.world.disableBody(carrot.body)
 
