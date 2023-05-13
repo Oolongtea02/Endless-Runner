@@ -32,6 +32,17 @@ class GameOver extends Phaser.Scene
             },
         });
 
+		const text1 = this.add.text(80, 100, 'Credits: \n Programmer, Art, Concept Design: Samuel \n Music: Pond5 \n SFX: Pixabay', {
+            fontFamily: 'Courier',
+            fontSize: '16px',
+            color: 'tan',
+            align: 'left',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+        });
+
 
 		this.input.keyboard.once('keydown-SPACE', () => {
 			this.scene.start('menuScene')

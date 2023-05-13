@@ -124,7 +124,7 @@ class Game extends Phaser.Scene
 
 		if (touchingDown)
 		{
-			this.player.setVelocityY(-400)
+			this.player.setVelocityY(-350)
 			this.player.setTexture('bunny-jump')
 
 			this.sound.play('jump')
