@@ -7,6 +7,10 @@ class GameOver extends Phaser.Scene
 		super('game-over')
 	}
 
+	preload() {
+		this.load.audio('bg_music', './assets/bgm.mp3')
+	}
+
 	create()
 	{
 		const width = this.scale.width
@@ -17,8 +21,20 @@ class GameOver extends Phaser.Scene
 		})
 		.setOrigin(0.5)
 
+		const text = this.add.text(100, 420, 'Press Spacebar to restart', {
+            fontFamily: 'Courier',
+            fontSize: '24px',
+            color: 'pink',
+            align: 'left',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+        });
+
+
 		this.input.keyboard.once('keydown-SPACE', () => {
-			this.scene.start('game')
+			this.scene.start('menuScene')
 		})
 	}
 }

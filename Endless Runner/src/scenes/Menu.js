@@ -5,9 +5,15 @@ class Menu extends Phaser.Scene {
 
     preload() {
         this.load.image('background', './assets/bg_layer1.png');
+        this.load.image('bunny_bg', './assets/bunny_bg.png');
+        //load UI sound effects
+        this.load.audio('sfx_start', './assets/sfx/start.wav');
     }
 
     create() {
+        //add menu background image
+        this.add.image(0, 0, 'bunny_bg').setOrigin(0, 0);
+
         let menuConfig = {
             fontFamily: 'Courier',
             fontSize: '28px',
@@ -24,7 +30,7 @@ class Menu extends Phaser.Scene {
         const text = this.add.text(100, 180, 'Endless Runner', {
             fontFamily: 'Courier',
             fontSize: '38px',
-            color: 'blue',
+            color: '#3c91d6',
             align: 'center',
             padding: {
                 top: 5,
@@ -46,7 +52,7 @@ class Menu extends Phaser.Scene {
         const text2 = this.add.text(50, 340, 'Pick up as many carrots \n as you can to jump faster', {
             fontFamily: 'Courier',
             fontSize: '24px',
-            color: 'blue',
+            color: '#3c91d6',
             align: 'center',
             padding: {
                 top: 5,
@@ -74,6 +80,7 @@ class Menu extends Phaser.Scene {
 
     update() {
         if (Phaser.Input.Keyboard.JustDown(keyS)) {
+            this.sound.play('sfx_start');
             this.scene.start('game');
         }
     }

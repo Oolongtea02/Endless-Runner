@@ -38,6 +38,7 @@ class Game extends Phaser.Scene
 		this.load.image('bunny-stand', './assets/bunny_stand.png')
 		this.load.image('bunny-jump', './assets/bunny_jump.png')
 		this.load.image('carrot', './assets/carrot.png')
+		this.load.image('mountain', './assets/mountain.png')
 
 		this.load.audio('jump', 'assets/sfx/phaseJump1.wav')
         this.load.audio('bg_music', './assets/bgm.mp3')
@@ -47,11 +48,14 @@ class Game extends Phaser.Scene
 
 	create()
 	{
-        this.sound.add('bg_music',{ loop: true, volume : 0.5 }).play();
+        this.music = this.sound.add('bg_music',{ loop: true, volume : 0.1 }).play();
 
 		this.add.image(240, 320, 'background')
 			.setScrollFactor(1, 0)
 
+		//place tilesprite
+		this.mountain = this.add.tileSprite(0, 0, 480, 640, 'mountain').setOrigin(0, 0)
+		
 		this.platforms = this.physics.add.staticGroup()
 
 		// then create 5 platforms from the group
@@ -99,6 +103,8 @@ class Game extends Phaser.Scene
 		{
 			return
 		}
+
+		this.mountain.tilePositionX -= 4;
 
 		this.platforms.children.iterate(child => {
 			/** @type {Phaser.Physics.Arcade.Sprite} */
